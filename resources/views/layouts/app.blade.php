@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    @if(auth()->user())
     <script type="text/javascript">
         window.user = {
             id: {{ auth()->id()}},
@@ -18,6 +19,7 @@
         };
         window.csrfToken = "{{csrf_token()}}";
     </script>
+    @endif
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">

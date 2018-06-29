@@ -36343,6 +36343,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+var APP_KEY = '8efe799077fbf2221916';
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -36393,7 +36394,7 @@ var App = function (_Component) {
                 cluster: 'ap2',
                 auth: {
                     params: this.user.id,
-                    header: {
+                    headers: {
                         'X-CSRF-Token': window.csrfToken
                     }
                 }
@@ -36413,7 +36414,7 @@ var App = function (_Component) {
         value: function startPeer(userId, initiator) {
             var _this4 = this;
 
-            var peer = new peer({
+            var peer = new Peer({
                 initiator: initiator,
                 stream: this.user.stream,
                 trickle: false
@@ -36455,14 +36456,14 @@ var App = function (_Component) {
                 'div',
                 { className: 'App' },
                 [1, 2, 3, 4].map(function (userId) {
-                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    return _this5.user.id !== userId ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { onClick: function onClick() {
+                        { key: userId, onClick: function onClick() {
                                 return _this5.callTo(userId);
                             } },
                         'Call ',
                         userId
-                    );
+                    ) : null;
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
